@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+	<variable name="PVRTimeProgress">
+		<value condition="!Integer.IsGreater(ListItem.Progress,5)">windows/pvr/clock_progress/5.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,5) + !Integer.IsGreater(ListItem.Progress,10)">windows/pvr/clock_progress/10.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,10) + !Integer.IsGreater(ListItem.Progress,15)">windows/pvr/clock_progress/15.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,15) + !Integer.IsGreater(ListItem.Progress,20)">windows/pvr/clock_progress/20.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,20) + !Integer.IsGreater(ListItem.Progress,25)">windows/pvr/clock_progress/25.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,25) + !Integer.IsGreater(ListItem.Progress,30)">windows/pvr/clock_progress/30.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,30) + !Integer.IsGreater(ListItem.Progress,35)">windows/pvr/clock_progress/35.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,35) + !Integer.IsGreater(ListItem.Progress,40)">windows/pvr/clock_progress/40.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,40) + !Integer.IsGreater(ListItem.Progress,45)">windows/pvr/clock_progress/45.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,45) + !Integer.IsGreater(ListItem.Progress,50)">windows/pvr/clock_progress/50.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,50) + !Integer.IsGreater(ListItem.Progress,55)">windows/pvr/clock_progress/55.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,55) + !Integer.IsGreater(ListItem.Progress,60)">windows/pvr/clock_progress/60.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,60) + !Integer.IsGreater(ListItem.Progress,65)">windows/pvr/clock_progress/65.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,65) + !Integer.IsGreater(ListItem.Progress,70)">windows/pvr/clock_progress/70.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,70) + !Integer.IsGreater(ListItem.Progress,75)">windows/pvr/clock_progress/75.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,75) + !Integer.IsGreater(ListItem.Progress,80)">windows/pvr/clock_progress/80.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,80) + !Integer.IsGreater(ListItem.Progress,85)">windows/pvr/clock_progress/85.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,85) + !Integer.IsGreater(ListItem.Progress,90)">windows/pvr/clock_progress/90.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,90) + !Integer.IsGreater(ListItem.Progress,95)">windows/pvr/clock_progress/95.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,95) + !Integer.IsGreater(ListItem.Progress,100)">windows/pvr/clock_progress/100.png</value>
+		<value condition="Integer.IsGreater(ListItem.Progress,100)">windows/pvr/clock_progress/100.png</value>
+	</variable>
+
+	<variable name="PVRContentInfo">
+		<value condition="Window.IsVisible(TVChannels) | [Window.IsVisible(PVROSDChannels) + pvr.IsPlayingTv]">$LOCALIZE[19023]</value>
+		<value condition="Window.IsVisible(RadioChannels) | [Window.IsVisible(PVROSDChannels) + pvr.IsPlayingRadio]">$LOCALIZE[19024]</value>
+		<value condition="Window.IsActive(TVGuide) | Window.IsActive(RadioGuide) | Window.IsVisible(PVRChannelGuide)">$LOCALIZE[22020]</value>
+		<value condition="Window.IsVisible(TVRecordings)">$LOCALIZE[19163]</value>
+		<value condition="Window.IsVisible(TVTimers)">Scheduled Recordings</value>
+		<value condition="Window.IsVisible(TVTimerRules)">Series Record</value>
+		<value condition="Window.IsVisible(TVSearch)">$LOCALIZE[137]</value>
+	</variable>
+
+	<variable name="PVRChannelsGroupLabel">
+		<value condition="Window.IsActive(TVChannels) | Window.IsActive(RadioChannels)">$LOCALIZE[19019]$INFO[Control.GetLabel(29),: ]</value>
+		<value>$LOCALIZE[19019]</value>
+	</variable>
+	<variable name="PVRChannelsGroupAltLabel">
+		<value condition="Window.IsActive(TVChannels) | Window.IsActive(RadioChannels)">$LOCALIZE[19019]$INFO[Control.GetLabel(29),: ]</value>
+		<value>$LOCALIZE[19019]</value>
+	</variable>
+
+	<variable name="PVRGuideGroupLabel">
+		<value condition="Window.IsActive(TVGuide) | Window.IsActive(RadioGuide)">$LOCALIZE[22020]$INFO[Control.GetLabel(30),: ]</value>
+		<value>$LOCALIZE[22020]</value>
+	</variable>
+	<variable name="PVRGuideGroupAltLabel">
+		<value condition="Window.IsActive(TVGuide) | Window.IsActive(RadioGuide)">$LOCALIZE[22020]$INFO[Control.GetLabel(30),: ]</value>
+		<value>$LOCALIZE[22020]</value>
+	</variable>
+
+	<variable name="PVRChannelManagerHeadLabel">
+		<value condition="String.IsEmpty(Window.Property(IsRadio))">$LOCALIZE[19199] - $LOCALIZE[19023]</value>
+		<value>$LOCALIZE[19199] - $LOCALIZE[19024]</value>
+	</variable>
+
+  <variable name="PVROSDGuide.IsPlayingDate">
+    <value condition="ListItem.IsPlaying | [String.IsEqual(ListItem.Title,VideoPlayer.Title) + String.IsEqual(ListItem.ChannelNumberLabel,VideoPlayer.ChannelNumberLabel) + String.IsEqual(ListItem.EndTime,VideoPlayer.EndTime)]">[COLOR=$VAR[Text.GlobalColor]]$INFO[ListItem.StartDate][/COLOR]</value>
+    <value>$INFO[ListItem.StartDate]</value>
+  </variable>
+  <variable name="PVROSDGuide.IsPlayingTime">
+    <value condition="ListItem.IsPlaying | [String.IsEqual(ListItem.Title,VideoPlayer.Title) + String.IsEqual(ListItem.ChannelNumberLabel,VideoPlayer.ChannelNumberLabel) + String.IsEqual(ListItem.EndTime,VideoPlayer.EndTime)]">[COLOR=$VAR[Text.GlobalColor]]$INFO[ListItem.StartTime][/COLOR]</value>
+    <value>$INFO[ListItem.StartTime]</value>
+  </variable>
+  <variable name="PVROSDGuide.IsPlayingLabel">
+    <value condition="ListItem.IsPlaying | [String.IsEqual(ListItem.Title,VideoPlayer.Title) + String.IsEqual(ListItem.ChannelNumberLabel,VideoPlayer.ChannelNumberLabel) + String.IsEqual(ListItem.EndTime,VideoPlayer.EndTime)]">[COLOR=$VAR[Text.GlobalColor]]$INFO[ListItem.Label][/COLOR]</value>
+    <value>$INFO[ListItem.Label]</value>
+  </variable>
+  <variable name="PVROSDGuide.IsPlayingGenre">
+    <value condition="ListItem.IsPlaying | [String.IsEqual(ListItem.Title,VideoPlayer.Title) + String.IsEqual(ListItem.ChannelNumberLabel,VideoPlayer.ChannelNumberLabel) + String.IsEqual(ListItem.EndTime,VideoPlayer.EndTime)]">[COLOR=$VAR[Text.GlobalColor]]$INFO[ListItem.Genre][/COLOR]</value>
+    <value>$INFO[ListItem.Genre]</value>
+  </variable>
+
+	<include name="PVRInfoPanel">
+	<control type="group">
+		<visible>ListItem.IsFolder + !Control.IsVisible(9000)</visible>
+		<top>45</top>
+		<left>150</left>
+		<control type="label">
+			<top>10</top>
+			<width>30</width>
+			<height>262</height>
+			<label>$INFO[Container(5000).NumItems,[B],[/B]]</label>
+			<textcolor>white</textcolor>
+			<font>font56</font>
+			<visible>!ListItem.IsParentFolder + !Control.IsVisible(9000)</visible>
+		</control>
+		<control type="panel" id="5000">
+			<top>20</top>
+			<width>30</width>
+			<bottom>100</bottom>
+			<orientation>vertical</orientation>
+			<content sortby="date" sortorder="$PARAM[folder_sortorder]">$INFO[ListItem.FilenameAndPath]</content>
+		</control>
+	</control>
+</include>
+
+	<include name="PVRControlsMenu">
+		<!-- PVR Controls Menu -->
+		<control type="group"  id="9000">
+			<left>30</left>
+			<top>25</top>
+			<include>ShutdownMenuAnimation</include>
+			<include>OptionsTopMenuAnimation</include>
+			<include>OptionsTopMenuHeader</include>
+			<control type="grouplist" id="9111">
+				<include>OptionsTopMenuVars</include>
+				<control type="togglebutton" id="131">
+					<description>EPG Guide</description>
+					<label>TV Guide</label>
+					<include>TopLeftMenusButton</include>
+					<onclick condition="Window.IsActive(TVGuide) | Window.IsActive(RadioGuide)">Action(left)</onclick>
+					<onclick condition="Window.IsActive(TVGuide) | Window.IsActive(RadioGuide)">SendClick(28)</onclick>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVGuide)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioGuide)</onclick>
+				</control>
+				<control type="button" id="132">
+					<description>Recordings</description>
+					<label>$LOCALIZE[19163]</label>
+					<include>TopLeftMenusButton</include>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVRecordings)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioRecordings)</onclick>
+				</control>
+				<control type="button" id="133">
+					<description>Timers</description>
+					<label>Scheduled Recordings</label>
+					<include>TopLeftMenusButton</include>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVTimers)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioTimers)</onclick>
+				</control>
+				<control type="button" id="134">
+					<description>Timer Rules</description>
+					<include>TopLeftMenusButton</include>
+					<label>Series Recordings</label>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVTimerRules)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioTimerRules)</onclick>
+				</control>
+				<control type="button" id="2">
+					<description>View as</description>
+					<label></label>
+					<include>TopLeftMenusButton</include>
+					<visible>Window.IsActive(TVChannels) | Window.IsActive(RadioChannels)</visible>
+				</control>
+				<control type="button" id="311">
+					<description>Sort by</description>
+					<include>TopLeftMenusButton</include>
+					<label>$INFO[Control.GetLabel(3)]</label>
+					<onclick>Action(left)</onclick>
+					<onclick>SendClick(3)</onclick>
+					<enable>Control.IsEnabled(3)</enable>
+				</control>
+				<control type="togglebutton" id="4">
+					<description>Ascending/Descending</description>
+					<label>$LOCALIZE[21429]:  $LOCALIZE[584]</label>
+					<altlabel>$LOCALIZE[21429]:  $LOCALIZE[585]</altlabel>
+					<include>TopLeftMenusButton</include>
+				</control>
+				<control type="togglebutton" id="8">
+					<description>Hide Disabled Timers</description>
+					<label>$LOCALIZE[19077]: $LOCALIZE[16039]</label>
+					<altlabel>$LOCALIZE[19077]: $LOCALIZE[16041]</altlabel>
+					<include>TopLeftMenusButton</include>
+					<visible>Window.IsActive(TVTimers) | Window.IsActive(RadioTimers) | Window.IsActive(TVTimerRules) | Window.IsActive(RadioTimerRules)</visible>
+				</control>
+				<control type="togglebutton" id="99">
+<description>Show Program Info</description>
+<label>$LOCALIZE[19047]: $LOCALIZE[16039]</label>
+<altlabel>$LOCALIZE[19047]: $LOCALIZE[16041]</altlabel>
+<include>TopLeftMenusButton</include>
+<onclick>Skin.ToggleSetting(ShowProgramInfo)</onclick>
+<usealttexture>Skin.HasSetting(ShowProgramInfo)</usealttexture>
+<visible>Window.IsActive(TVGuide) | Window.IsActive(RadioGuide)</visible>
+</control>
+<control type="togglebutton" id="5">
+					<description>Group Recordings by Folder</description>
+					<label>$LOCALIZE[19270]: $LOCALIZE[16039]</label>
+					<altlabel>$LOCALIZE[19270]: $LOCALIZE[16041]</altlabel>
+					<include>TopLeftMenusButton</include>
+					<visible>Window.IsActive(TVRecordings) | Window.IsActive(RadioRecordings)</visible>
+				</control>
+				<include>OptionsTopMenuEnd</include>
+			</control>
+
+			<control type="button" id="3">
+				<description>Short by</description>
+				<visible>false</visible>
+			</control>
+			<control type="label" id="31">
+				<visible>false</visible>
+			</control>
+			<control type="button" id="28">
+				<visible>false</visible>
+			</control>
+		</control>
+
+		<!-- Top Content Info -->
+		<control type="group">
+			<left>45</left>
+			<top>25</top>
+			<include>ShutdownMenuAnimation</include>
+			<include>InfoDialogs_ContentInfoAnimation</include>
+			<include>VisibleHiddenSlideAnimation</include>
+			<visible>!ControlGroup(9000).HasFocus + !Window.IsActive(PVRGuideInfo) + !Window.IsActive(PVRRecordingInfo)</visible>
+			<control type="grouplist">
+				<left>0</left>
+				<top>0</top>
+				<height>70</height>
+				<width>1000</width>
+				<align>left</align>
+				<itemgap>15</itemgap>
+				<orientation>horizontal</orientation>
+				<include>LogoBig</include>
+				<include>OpenCloseSlideAnimationTwo</include>
+				<control type="label">
+					<include>TopBigLabel</include>
+					<label>$LOCALIZE[31000]</label>
+				</control>
+				<control type="label">
+					<include>TopSmallLabel</include>
+					<label>$VAR[PVRContentInfo]</label>
+				</control>
+				<control type="label">
+					<include>TopSmallLabel</include>
+					<label>$INFO[Control.GetLabel(29)]</label>
+					<visible>![Window.IsActive(TVGuide) | Window.IsActive(RadioGuide)]</visible>
+				</control>
+				<control type="label">
+					<include>TopSmallLabel</include>
+					<label>$INFO[Control.GetLabel(30)]</label>
+					<visible>Window.IsActive(TVGuide) | Window.IsActive(RadioGuide) | Window.IsActive(TVRecordings)</visible>
+				</control>
+			</control>
+
+
+		</control>
+	</include>
+
+	<!--
+	<include name="LiveTV_InfoLabels">
+		<control type="group">
+			<left>45</left>
+			<top>215</top>
+			<animation effect="slide" end="0,-25" time="0" condition="Control.IsVisible(10)">Conditional</animation>
+			<control type="grouplist">
+				<left>0</left>
+				<top>0</top>
+				<height>70</height>
+				<width>1000</width>
+				<align>left</align>
+				<orientation>horizontal</orientation>
+				<control type="label">
+					<include>TopBigLabel</include>
+					<label>$INFO[Control.GetLabel(29)]</label>
+					<visible>![Window.IsActive(TVGuide) | Window.IsActive(RadioGuide)]</visible>
+				</control>
+				<control type="label">
+					<include>TopBigLabel</include>
+					<label>$INFO[Control.GetLabel(30)]</label>
+				</control>
+			</control>
+		</control>
+	</include>
+	-->
+
+	<include name="EPGTimelineInfo">
+		<control type="group">
+			<left>55</left>
+			<top>100</top>
+			<visible>Control.IsVisible(10) + Skin.HasSetting(ShowProgramInfo)</visible>
+			<control type="image">
+				<left>0</left>
+				<top>0</top>
+				<width>180</width>
+				<height>115</height>
+				<texture>$INFO[ListItem.EPGEventIcon]</texture>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+			</control>
+			<control type="image">
+				<left>0</left>
+				<top>0</top>
+				<width>180</width>
+				<height>115</height>
+				<texture>$INFO[Container(10).ListItem.Icon]</texture>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<visible>String.IsEmpty(ListItem.EPGEventIcon)</visible>
+			</control>
+			<control type="button">
+				<description>Time/Date</description>
+				<left>190</left>
+				<top>0</top>
+				<width>1010</width>
+				<font>FontSize_24B</font>
+				<textcolor>99white</textcolor>
+				<shadowcolor>99000000</shadowcolor>
+				<texturefocus></texturefocus>
+				<texturenofocus></texturenofocus>
+				<align>left</align>
+				<aligny>top</aligny>
+				<textoffsetx>0</textoffsetx>
+				<label>$INFO[ListItem.Title]</label>
+				<label2>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime]</label2>
+			</control>
+			<control type="button">
+				<description>Time/Date</description>
+				<left>190</left>
+				<top>25</top>
+				<width>1010</width>
+				<font>FontSize_20B</font>
+				<textcolor>99white</textcolor>
+				<shadowcolor>99000000</shadowcolor>
+				<texturefocus></texturefocus>
+				<texturenofocus></texturenofocus>
+				<align>left</align>
+				<aligny>top</aligny>
+				<textoffsetx>0</textoffsetx>
+				<label>$INFO[ListItem.EpisodeName]</label>
+					</control>
+			<control type="button">
+				<description>Time/Date</description>
+				<left>170</left>
+				<top>25</top>
+				<width>1010</width>
+				<font>FontSize_20B</font>
+				<textcolor>99white</textcolor>
+				<shadowcolor>99000000</shadowcolor>
+				<texturefocus></texturefocus>
+				<texturenofocus></texturenofocus>
+				<align>left</align>
+				<aligny>top</aligny>
+				<textoffsetx>0</textoffsetx>
+				<label2>S$INFO[ListItem.Season] E$INFO[ListItem.Episode] - Episode $INFO[ListItem.Episode] of Season $INFO[ListItem.Season]</label2>
+        <visible>Window.IsActive(TVGuide) + [!String.IsEmpty(ListItem.Episode)]</visible>
+			</control>
+			<control type="textbox">
+				<left>190</left>
+				<top>50</top>
+				<width>1010</width>
+				<height>80</height>
+				<font>FontSize_20</font>
+				<textcolor>99white</textcolor>
+				<shadowcolor>99000000</shadowcolor>
+				<align>justify</align>
+				<autoscroll delay="800" time="2000" repeat="800">Skin.HasSetting(AutoScroll)</autoscroll>
+				<info>ListItem.Plot</info>
+			</control>
+		</control>
+	</include>
+
+
+</includes>

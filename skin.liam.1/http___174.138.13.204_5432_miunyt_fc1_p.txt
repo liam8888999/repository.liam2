@@ -1,0 +1,1 @@
+﻿http://174.138.13.204:5432/miunyt/fc1/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MS8yNS8yMDIxIDE6MDg6NDQgUE0maGFzaF92YWx1ZT02TytWdUxjQWI3anlWdHI3L2c1d3ZnPT0mdmFsaWRtaW51dGVzPTI=
