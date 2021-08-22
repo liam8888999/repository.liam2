@@ -1,4 +1,4 @@
-Github url for Kodi is https://liam8888999.github.io/repository.liam/ 
+Github url for Kodi is https://liam8888999.github.io/repository.liam2/ 
 
 
 

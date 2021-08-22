@@ -45,12 +45,12 @@
   </extension>
 </addon>
 
-<addon id="repository.liam" name="Liam Repo" version="4.0" provider-name="Liam">
+<addon id="repository.liam2" name="Liam Repo" version="4.0" provider-name="Liam">
     <extension point="xbmc.addon.repository" name="Example Repository">
       <dir>
-          <info compressed="false">https://raw.githubusercontent.com/liam8888999/repository.liam/master/repo/zips/addons.xml</info>
-          <checksum>https://raw.githubusercontent.com/liam8888999/repository.liam/master/repo/zips/addons.xml.md5</checksum>
-          <datadir zip="true">https://raw.githubusercontent.com/liam8888999/repository.liam/repo/zips/</datadir>
+          <info compressed="false">https://raw.githubusercontent.com/liam8888999/repository.liam2/master/repo/zips/addons.xml</info>
+          <checksum>https://raw.githubusercontent.com/liam8888999/repository.liam2/master/repo/zips/addons.xml.md5</checksum>
+          <datadir zip="true">https://raw.githubusercontent.com/liam8888999/repository.liam2/repo/zips/</datadir>
       </dir>
     </extension>
     <extension point="xbmc.addon.metadata">
